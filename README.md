@@ -1,4 +1,4 @@
-# ![Riot.NET](brand/logo-social.png)
+# ![Riot.NET](brand/logo-transparent.png)
 
 Riot.NET is a .NET 6 wrapper for the Riot Games API.
 
