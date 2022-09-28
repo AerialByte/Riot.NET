@@ -1,4 +1,4 @@
-﻿namespace RiotNET.Interfaces.Services;
+﻿namespace RiotNET.Services.Dragon;
 
 /// <summary>
 /// Provides an interface for accessing data from Data Dragon.

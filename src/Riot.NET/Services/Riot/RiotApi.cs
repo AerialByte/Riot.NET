@@ -1,7 +1,7 @@
 ﻿namespace RiotNET.Services.Riot;
 
-using RiotNET.Interfaces.Services;
 using Microsoft.Extensions.Options;
+using RiotNET.Endpoints.RiotGames.Riot;
 
 /// <summary>
 /// Provides an implementation for accessing data from the Riot Games API.
@@ -9,14 +9,17 @@ using Microsoft.Extensions.Options;
 /// </summary>
 public class RiotApi : IRiotApi
 {
-    private readonly RiotApiOptions config;
+    private readonly IOptions<RiotApiOptions> options;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RiotApi"/> class.
     /// </summary>
-    /// <param name="options">The configuration options for the riot api service.</param>
+    /// <param name="options">The configuration config for the riot api service.</param>
     public RiotApi(IOptions<RiotApiOptions> options)
     {
-        config = options.Value ?? new();
+        this.options = options;
     }
+
+    /// <inheritdoc/>
+    public IAccountEndpoint Account => new AccountEndpoint(options);
 }

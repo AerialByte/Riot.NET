@@ -3,7 +3,7 @@
 /// <summary>
 /// Unique platform identifiers that each represent a host prefix for the riot api.
 /// </summary>
-public enum PlatformId
+public enum PlatformRoute
 {
     /// <summary>
     /// Brazil

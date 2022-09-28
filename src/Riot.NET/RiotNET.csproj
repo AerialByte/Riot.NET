@@ -10,4 +10,14 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\DataDragon\" />
+    <Folder Include="Endpoints\CommunityDragon\" />
+    <Folder Include="Endpoints\RiotGames\LoL\" />
+    <Folder Include="Endpoints\RiotGames\TFT\" />
+    <Folder Include="Endpoints\RiotGames\Valorant\" />
+    <Folder Include="Endpoints\RiotGames\LoR\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

@@ -1,9 +1,9 @@
 ﻿namespace RiotNET.Enums;
 
 /// <summary>
-/// Region identifiers.
+/// Platform identifiers.
 /// </summary>
-public enum RegionId
+public enum RegionRoute
 {
     /// <summary>
     /// Americas
