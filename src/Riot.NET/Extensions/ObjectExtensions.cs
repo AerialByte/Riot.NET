@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Extensions;
-
 using System.Diagnostics.CodeAnalysis;
 
 /// <summary>

@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Endpoints.RiotGames.Riot;
-
 using RiotNET.Constants;
 
 /// <summary>

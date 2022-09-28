@@ -1,6 +1,5 @@
-﻿using RiotNET.Endpoints.RiotGames.Riot;
-
-namespace RiotNET.Endpoints;
+﻿namespace RiotNET.Endpoints;
+using RiotNET.Endpoints.RiotGames.Riot;
 
 /// <summary>
 /// Represents an endpoint to either an API

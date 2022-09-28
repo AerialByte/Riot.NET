@@ -1,8 +1,7 @@
-﻿using RiotNET.Extensions;
+﻿namespace RiotNET.Endpoints;
+using RiotNET.Extensions;
 using System.Collections.ObjectModel;
 using System.Net.Http.Json;
-
-namespace RiotNET.Endpoints;
 
 /// <summary>
 /// Defines an endpoint that's ready to process a request.

@@ -1,6 +1,5 @@
-﻿using System.Net;
-
-namespace RiotNET.Endpoints;
+﻿namespace RiotNET.Endpoints;
+using System.Net;
 
 /// <summary>
 /// The response from the endpoint request.

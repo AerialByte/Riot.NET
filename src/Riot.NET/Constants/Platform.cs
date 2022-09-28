@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Constants;
-
 using RiotNET.Enums;
 using System.Collections.ObjectModel;
 

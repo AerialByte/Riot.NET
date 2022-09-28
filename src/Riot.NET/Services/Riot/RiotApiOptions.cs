@@ -1,6 +1,5 @@
-﻿using RiotNET.Enums;
-
-namespace RiotNET.Services.Riot;
+﻿namespace RiotNET.Services.Riot;
+using RiotNET.Enums;
 
 /// <summary>
 /// Defines the configuration config for riot api instances.

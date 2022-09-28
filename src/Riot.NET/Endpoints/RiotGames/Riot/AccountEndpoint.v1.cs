@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Options;
+﻿namespace RiotNET.Endpoints.RiotGames.Riot;
+using Microsoft.Extensions.Options;
 using RiotNET.Constants;
 using RiotNET.Services.Riot;
-
-namespace RiotNET.Endpoints.RiotGames.Riot;
 
 /// <inheritdoc cref="IAccountEndpoint"/>
 internal class AccountEndpoint : RegionEndpoint, IAccountEndpoint

@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Services.Dragon;
-
 using Microsoft.Extensions.Options;
 
 /// <summary>

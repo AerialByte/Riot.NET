@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Endpoints.RiotGames.Riot;
-
 using System.Text.Json.Serialization;
 
 /// <summary>

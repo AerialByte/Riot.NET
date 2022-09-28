@@ -1,5 +1,4 @@
 ﻿namespace RiotNET.Services.Riot;
-
 using Microsoft.Extensions.Options;
 using RiotNET.Endpoints.RiotGames.Riot;
 
