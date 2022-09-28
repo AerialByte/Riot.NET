@@ -9,3 +9,5 @@ updates:
     directory: "/src"
     schedule:
       interval: "weekly"
+    target-branch: "develop"
+    
