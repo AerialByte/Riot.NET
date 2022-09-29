@@ -13,7 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotNETTests", "RiotNETTests\RiotNETTests.csproj", "{10FC5A5D-BE10-4142-8F3B-6156C464273F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiotNETTests", "RiotNETTests\RiotNETTests.csproj", "{10FC5A5D-BE10-4142-8F3B-6156C464273F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{20714974-8118-4362-B85F-F2449034E538}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{6D79AF2A-9C2B-4AB5-B5D2-340170C614DE}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\codeql-analysis.yml = ..\.github\workflows\codeql-analysis.yml
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
+		..\.github\workflows\nightly-package.yml = ..\.github\workflows\nightly-package.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +44,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6D79AF2A-9C2B-4AB5-B5D2-340170C614DE} = {20714974-8118-4362-B85F-F2449034E538}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4412AE91-6C7C-4038-9961-7476F4E43CFC}
