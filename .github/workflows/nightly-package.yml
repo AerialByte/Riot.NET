@@ -9,6 +9,7 @@ on:
         description: '(Optional) Version Override'
         required: false
         type: string
+        default: ''
 
 jobs:
 
@@ -18,7 +19,7 @@ jobs:
     outputs:
       should_run: ${{ steps.should_run.outputs.should_run }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: print latest_commit
         run: echo ${{ github.sha }}
       - id: should_run
@@ -35,19 +36,19 @@ jobs:
       run:
         working-directory: src
     steps:
-    - name: Set outputs
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build release
-      run: dotnet build --no-restore -c release /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
-    - name: Package release
-      run: dotnet pack -c release -o:package /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
-    - name: Nuget push github
-      run: dotnet nuget push ./package/*.nupkg --source https://nuget.pkg.github.com/aerialbyte/index.json --api-key ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build release
+        run: dotnet build --no-restore -c release /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
+      - name: Package release
+        run: dotnet pack -c release -o:package /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
+      - name: Nuget push github
+        run: dotnet nuget push ./package/*.nupkg --source https://nuget.pkg.github.com/aerialbyte/index.json --api-key ${{ github.token }}
