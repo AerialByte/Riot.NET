@@ -53,8 +53,12 @@ jobs:
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
           echo "::set-output name=sha_long::$(git rev-parse HEAD)"
       - name: Validate parameters
-        run: exit 1
-        if: ${{ inputs.package_stable }} && ${{ inputs.package_stability_hash }} != ${{ steps.vars.outputs.sha_long }}
+        run: |
+          if [[ "${{ inputs.package_stable }}" = true && "${{ inputs.package_stability_hash }}" != "${{ steps.vars.outputs.sha_long }}" ]]
+          then
+            exit 1
+          fi
+          echo "Valid commit hash '${{ inputs.package_stability_hash }}'"
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
