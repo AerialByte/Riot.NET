@@ -49,9 +49,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set outputs
         id: vars
-        run:
-          - echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-          - echo "::set-output name=sha_long::$(git rev-parse HEAD)"
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "::set-output name=sha_long::$(git rev-parse HEAD)"
       - name: Validate parameters
         run: exit 1
         if: ${{ inputs.package_stable }} && ${{ inputs.package_stability_hash }} != ${{ steps.vars.outputs.sha_long }}
