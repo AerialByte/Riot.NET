@@ -15,10 +15,12 @@
   
   <PropertyGroup>
     <VersionCommitHash />
+    <VersionOverride />
     <UTCYearMonth>$([System.DateTime]::UtcNow.ToString(yyMM))</UTCYearMonth>
-    <UTCHourMinSec>$([System.DateTime]::UtcNow.ToString(ddHH))</UTCHourMinSec>
-    <VersionSuffix Condition=" '$(VersionCommitHash)' == '' ">1.0.$(UTCYearMonth).$(UTCHourMinSec)-alpha</VersionSuffix>
-    <VersionSuffix Condition=" '$(VersionCommitHash)' != '' ">1.0.$(UTCYearMonth).$(UTCHourMinSec)-alpha-$(VersionCommitHash)</VersionSuffix>
+    <UTCDayHour>$([System.DateTime]::UtcNow.ToString(ddHH))</UTCDayHour>
+    <VersionSuffix Condition=" '$(VersionCommitHash)' == '' ">1.0.$(UTCYearMonth).$(UTCDayHour)-alpha</VersionSuffix>
+    <VersionSuffix Condition=" '$(VersionCommitHash)' != '' ">1.0.$(UTCYearMonth).$(UTCDayHour)-alpha-$(VersionCommitHash)</VersionSuffix>
+    <VersionSuffix Condition=" '$(VersionOverride)' != '' ">$(VersionOverride)</VersionSuffix>
     <AssemblyVersion Condition=" '$(VersionSuffix)' == '' ">0.0.0.1</AssemblyVersion>
     <AssemblyVersion Condition=" '$(VersionSuffix)' != '' ">$(VersionSuffix)</AssemblyVersion>
     <Version Condition=" '$(VersionSuffix)' == '' ">0.0.1.0</Version>

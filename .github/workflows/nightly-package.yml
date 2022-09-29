@@ -3,6 +3,12 @@ name: Nightly Package
 on:
   schedule:
     - cron: '0 2 * * *'
+  workflow_dispatch: # adding the workflow_dispatch so it can be triggered manually
+    inputs:
+      version_override:
+        description: '(Optional) Version Override'
+        required: string
+        default: ''
 
 jobs:
 
@@ -40,8 +46,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build release
-      run: dotnet build --no-restore -c release /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }}
+      run: dotnet build --no-restore -c release /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
     - name: Package release
-      run: dotnet pack -c release -o:package /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }}
+      run: dotnet pack -c release -o:package /p:VersionCommitHash=${{ steps.vars.outputs.sha_short }} /p:VersionOverride=${{ inputs.version_override }}
     - name: Nuget push github
       run: dotnet nuget push ./package/*.nupkg --source https://nuget.pkg.github.com/aerialbyte/index.json --api-key ${{ github.token }}
