@@ -14,17 +14,30 @@
   </PropertyGroup>
   
   <PropertyGroup>
+    <!-- The base version -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    
+    <!-- Parameters -->
     <VersionCommitHash />
-    <VersionOverride />
-    <UTCYearMonth>$([System.DateTime]::UtcNow.ToString(yyMM))</UTCYearMonth>
-    <UTCDayHour>$([System.DateTime]::UtcNow.ToString(ddHH))</UTCDayHour>
-    <VersionSuffix Condition=" '$(VersionCommitHash)' == '' ">1.0.$(UTCYearMonth).$(UTCDayHour)-alpha</VersionSuffix>
-    <VersionSuffix Condition=" '$(VersionCommitHash)' != '' ">1.0.$(UTCYearMonth).$(UTCDayHour)-alpha-$(VersionCommitHash)</VersionSuffix>
-    <VersionSuffix Condition=" '$(VersionOverride)' != '' ">$(VersionOverride)</VersionSuffix>
-    <AssemblyVersion Condition=" '$(VersionSuffix)' == '' ">0.0.0.1</AssemblyVersion>
-    <AssemblyVersion Condition=" '$(VersionSuffix)' != '' ">$(VersionSuffix)</AssemblyVersion>
-    <Version Condition=" '$(VersionSuffix)' == '' ">0.0.1.0</Version>
-    <Version Condition=" '$(VersionSuffix)' != '' ">$(VersionSuffix)</Version>
+    <PackageType>nightly</PackageType>
+    <StablePackageRelease>false</StablePackageRelease>
+    
+    <!-- Create suffix -->
+    <DateTimeUTC>$([System.DateTime]::UtcNow.ToString(yyyyMMdd))</DateTimeUTC>
+
+    <VersionPackageType Condition =" '$(PackageType)' == 'nightly' ">$(PackageType)-$(DateTimeUTC)</VersionPackageType>
+    <VersionPackageType Condition =" '$(PackageType)' != 'nightly' ">$(PackageType)</VersionPackageType>
+    
+    <VersionSuffix Condition=" '$(VersionCommitHash)' == '' ">$(VersionPackageType)</VersionSuffix>
+    <VersionSuffix Condition=" '$(VersionCommitHash)' != '' ">$(VersionPackageType)-$(VersionCommitHash)</VersionSuffix>
+    
+    <!-- Create versions based on parameters -->
+    <AssemblyVersion Condition=" '$(StablePackageRelease)' == 'true' ">$(VersionPrefix)</AssemblyVersion>
+    <AssemblyVersion Condition=" '$(StablePackageRelease)' != 'true' ">$(VersionPrefix)-$(VersionSuffix)</AssemblyVersion>
+    <Version Condition=" '$(StablePackageRelease)' == 'true' ">$(VersionPrefix)</Version>
+    <Version Condition=" '$(StablePackageRelease)' != 'true' ">$(VersionPrefix)-$(VersionSuffix)</Version>
+    
+    <!-- Disable automatic versioning -->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
   </PropertyGroup>

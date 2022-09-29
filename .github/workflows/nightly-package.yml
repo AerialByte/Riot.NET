@@ -5,11 +5,21 @@ on:
     - cron: '0 2 * * *'
   workflow_dispatch: # adding the workflow_dispatch so it can be triggered manually
     inputs:
-      version_override:
-        description: '(Optional) Version Override'
-        required: false
+      package_type:
         type: string
+        description: 'Package type, defaults to nightly.'
+        default: 'nightly'
+        required: false
+      package_stable:
+        type: boolean
+        description: 'Publish a stable release. Do not use on unstable branches!'
+        default: false
+        required: false
+      package_stability_hash:
+        type: string
+        description: 'If publishing a stable release, confirm by entering the commit hash (full):'
         default: ''
+        required: false
 
 jobs:
 
@@ -40,6 +50,12 @@ jobs:
       - name: Set outputs
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_long::$(git rev-parse HEAD)"
+      - name: Validate parameters
+        run: exit 1
+        if: ${{ inputs.package_stable }} && ${{ inputs.package_stability_hash }} != ${{ steps.vars.outputs.sha_long }}
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
