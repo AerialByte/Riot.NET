@@ -2,7 +2,7 @@
 ## Just another .NET wrapper :)
 
 [![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/AerialByte/Riot.NET/Build%20and%20Test?event=push&style=flat)](https://github.com/AerialByte/Riot.NET/actions/workflows/build-and-test.yml)
-[![Codecov](https://img.shields.io/codecov/c/github/AerialByte/Riot.NET?style=flat)](https://app.codecov.io/gh/AerialByte/Riot.NET)
+[![Codecov branch](https://img.shields.io/codecov/c/gh/AerialByte/RiotDotNET/develop?style=flat)](https://app.codecov.io/gh/AerialByte/RiotDotNET)
 [![GitHub](https://img.shields.io/github/license/AerialByte/Riot.NET?logo=github&style=flat)](https://github.com/AerialByte/Riot.NET/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1024197539102212117?color=%237289da&label=Discord&logo=discord&logoColor=%237289da&style=flat)](https://discord.gg/hJMAVh8YPE)
 
