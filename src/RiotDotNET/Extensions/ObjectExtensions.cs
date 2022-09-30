@@ -1,6 +1,4 @@
 ﻿namespace RiotDotNET.Extensions;
-using System.Diagnostics.CodeAnalysis;
-
 /// <summary>
 /// Extension methods for all objects.
 /// </summary>

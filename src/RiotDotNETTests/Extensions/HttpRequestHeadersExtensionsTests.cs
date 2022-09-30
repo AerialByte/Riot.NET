@@ -1,7 +1,5 @@
 ﻿namespace RiotDotNET.Extensions.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Security.Cryptography.X509Certificates;
 
 [TestClass]
 public class HttpRequestHeadersExtensionsTests
