@@ -30,5 +30,8 @@ public class PlatformTests
         {
             Assert.IsNotNull(Platform.FromRoute(route));
         }
+
+        Assert.ThrowsException<ArgumentException>(() => Platform.FromCode((PlatformCode)999));
+        Assert.ThrowsException<ArgumentException>(() => Platform.FromRoute((PlatformRoute)999));
     }
 }

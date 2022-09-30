@@ -23,5 +23,7 @@ public class RegionTests
         {
             Assert.IsNotNull(Region.FromRoute(route));
         }
+
+        Assert.ThrowsException<ArgumentException>(() => Region.FromRoute((RegionRoute)999));
     }
 }
