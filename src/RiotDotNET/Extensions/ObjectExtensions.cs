@@ -1,4 +1,6 @@
 ﻿namespace RiotDotNET.Extensions;
+using System.Diagnostics.CodeAnalysis;
+
 /// <summary>
 /// Extension methods for all objects.
 /// </summary>
@@ -9,5 +11,5 @@ public static class ObjectExtensions
     /// </summary>
     /// <param name="input">The input object.</param>
     /// <returns>The lowercase string, or null if one was not specified.</returns>
-    public static string? ToStringLower<T>(this T input) => input?.ToString()?.ToLower();
+    public static string? ToStringLower<T>([NotNull] this T input) => input.ToString()?.ToLower();
 }

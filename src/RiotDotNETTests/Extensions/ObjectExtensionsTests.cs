@@ -5,11 +5,30 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 public class ObjectExtensionsTests
 {
     [TestMethod]
-    [DataRow(null, null)]
-    [DataRow("", "")]
-    [DataRow(" ", " ")]
-    [DataRow("TEST", "test")]
-    [DataRow(123, "123")]
-    public void ToStringLowerTest(object input, string expectedOutput) =>
-        Assert.AreEqual(expectedOutput, input.ToStringLower());
+    public void ToStringLowerTest()
+    {
+        Dictionary<object, string?> tests = new()
+        {
+            [""] = "",
+            [" Test .,! "] = " test .,! ",
+            ["TEST"] = "test",
+            [123] = "123",
+        };
+        foreach (var inputExpected in tests)
+        {
+            Assert.AreEqual(inputExpected.Value, inputExpected.Key.ToStringLower());
+        }
+
+        Assert.AreEqual(" - (test): custom object! ", new CustomObject { Name = "tEsT", Value = "CuSTOM oBJEcT! " }.ToStringLower());
+
+        object? nullObj = null;
+        Assert.ThrowsException<NullReferenceException>(() => nullObj.ToStringLower());
+    }
+
+    class CustomObject
+    {
+        public string Name { get; init; } = default!;
+        public string Value { get; init; } = default!;
+        public override string ToString() => $" - ({Name}): {Value}";
+    }
 }
