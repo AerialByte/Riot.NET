@@ -5,6 +5,7 @@
 [![Codecov branch](https://img.shields.io/codecov/c/gh/AerialByte/RiotDotNET/develop?style=flat)](https://app.codecov.io/gh/AerialByte/RiotDotNET)
 [![GitHub](https://img.shields.io/github/license/AerialByte/Riot.NET?logo=github&style=flat)](https://github.com/AerialByte/Riot.NET/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1024197539102212117?color=%237289da&label=Discord&logo=discord&logoColor=%237289da&style=flat)](https://discord.gg/hJMAVh8YPE)
+[![Nuget version](https://img.shields.io/nuget/v/RiotDotNET?style=flat)](https://www.nuget.org/packages/RiotDotNET/)
 
 Riot.NET is a wapper for Riot Games<sup>1</sup> API targeting .NET 6 and above. If you are looking for a wrapper that targets older versions of .NET, try checking out [RiotSharp](https://github.com/BenFradet/RiotSharp)<sup>2</sup>.
 
