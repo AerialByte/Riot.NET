@@ -20,6 +20,7 @@ public class ObjectExtensionsTests
         }
 
         Assert.AreEqual(" - (test): custom object! ", new CustomObject { Name = "tEsT", Value = "CuSTOM oBJEcT! " }.ToStringLower());
+        Assert.AreEqual(null, new NullToString().ToStringLower());
 
         object? nullObj = null;
         Assert.ThrowsException<NullReferenceException>(() => nullObj.ToStringLower());
@@ -30,5 +31,10 @@ public class ObjectExtensionsTests
         public string Name { get; init; } = default!;
         public string Value { get; init; } = default!;
         public override string ToString() => $" - ({Name}): {Value}";
+    }
+
+    class NullToString
+    {
+        public override string? ToString() => null;
     }
 }
