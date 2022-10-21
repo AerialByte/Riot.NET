@@ -8,4 +8,7 @@ public interface IRiotApi
 {
     /// <inheritdoc cref="IAccountEndpoint"/>
     IAccountEndpoint Account { get; }
+
+    /// <inheritdoc cref="ISummonerEndpoint"/>
+    ISummonerEndpoint Summoner { get; }
 }

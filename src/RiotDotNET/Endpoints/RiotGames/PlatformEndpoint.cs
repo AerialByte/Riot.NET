@@ -35,5 +35,6 @@ internal abstract class PlatformEndpoint : RiotGamesEndpoint
 
     /// <inheritdoc cref="EndpointBase.Request{TResponse}(string)"/>
     /// <param name="region">The request platform.</param>
-    protected EndpointRequest<AccountDto> Request<TResponse>(Platform platform, string path) => SetPlatform(platform).Request<TResponse>(path);
+    protected EndpointRequest<TResponse> Request<TResponse>(Platform platform, string path) where TResponse : class =>
+        SetPlatform(platform).Request<TResponse>(path);
 }

@@ -6,7 +6,7 @@ using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
 
-public abstract class RegionEndpoint : RiotGamesEndpoint
+internal abstract class RegionEndpoint : RiotGamesEndpoint
 {
     /// <inheritdoc/>
     protected RegionEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
@@ -35,5 +35,7 @@ public abstract class RegionEndpoint : RiotGamesEndpoint
 
     /// <inheritdoc cref="EndpointBase.Request{TResponse}(string)"/>
     /// <param name="region">The request region.</param>
-    protected EndpointRequest<AccountDto> Request<TResponse>(Region region, string path) => SetRegion(region).Request<TResponse>(path);
+    protected EndpointRequest<TResponse> Request<TResponse>(Region region, string path)
+        where TResponse : class =>
+        SetRegion(region).Request<TResponse>(path);
 }

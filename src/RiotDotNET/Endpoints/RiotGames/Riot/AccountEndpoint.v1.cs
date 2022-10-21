@@ -4,10 +4,10 @@ using RiotDotNET.Constants;
 using RiotDotNET.Services.Riot;
 
 /// <inheritdoc cref="IAccountEndpoint"/>
-public sealed class AccountEndpoint : RegionEndpoint, IAccountEndpoint
+internal sealed class AccountEndpoint : RegionEndpoint, IAccountEndpoint
 {
-    /// <inheritdoc cref="RegionEndpoint(IOptions{RiotApiOptions}, Region)"/>
-    public AccountEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
+    /// <inheritdoc cref="RegionEndpoint(IHttpClientFactory, IOptions{RiotApiOptions})"/>
+    internal AccountEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
         : base(httpClientFactory, options)
     {
     }

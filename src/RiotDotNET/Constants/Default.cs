@@ -38,6 +38,7 @@ internal static class Default
             public const string Account_v1 = "riot/account/v1";
             public const string ChampionMastery_v4 = "lol/champion-mastery/v4";
             public const string Champion_v3 = "lol/platform/v3";
+            public const string Summoner_v4 = "lol/summoner/v4";
         }
     }
 }

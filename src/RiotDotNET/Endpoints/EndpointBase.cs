@@ -50,5 +50,7 @@ public abstract class EndpointBase
     /// </summary>
     /// <typeparam name="TResponse">The type of the response.</typeparam>
     /// <returns>A new request instance.</returns>
-    protected EndpointRequest<AccountDto> Request<TResponse>(string path) => new(httpClientFactory, CreateUri(path), Headers);
+    protected EndpointRequest<TResponse> Request<TResponse>(string path)
+        where TResponse : class =>
+        new(httpClientFactory, CreateUri(path), Headers);
 }

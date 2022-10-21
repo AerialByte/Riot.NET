@@ -1,6 +1,7 @@
 ﻿namespace RiotDotNET.Services.Riot;
 
 using Microsoft.Extensions.Options;
+using RiotDotNET.Endpoints.RiotGames.LoL;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 
 /// <summary>
@@ -24,4 +25,7 @@ public class RiotApi : IRiotApi
 
     /// <inheritdoc/>
     public IAccountEndpoint Account => new AccountEndpoint(httpClientFactory, options);
+
+    /// <inheritdoc/>
+    public ISummonerEndpoint Summoner => new SummonerEndpoint(httpClientFactory, options);
 }

@@ -30,7 +30,8 @@ public class AccountEndpointTests
     {
         expectedEndpoint = expectedEndpoint.Replace("{region}", route.ToStringLower());
 
-        var request = new AccountEndpoint(TestHttpClientFactory.Default, options).ByPuuid(puuid, Region.FromRoute(route));
+        var riotApi = new RiotApi(TestHttpClientFactory.Default, options);
+        var request = riotApi.Account.ByPuuid(puuid, Region.FromRoute(route));
         Assert.AreEqual(expectedEndpoint, request.Uri.AbsoluteUri);
 
         var response = await request.GetReponseAsync();
@@ -51,7 +52,8 @@ public class AccountEndpointTests
     {
         expectedEndpoint = expectedEndpoint.Replace("{region}", route.ToStringLower());
 
-        var request = new AccountEndpoint(TestHttpClientFactory.Default, options).ByRiotId(gameName, tagLine, Region.FromRoute(route));
+        var riotApi = new RiotApi(TestHttpClientFactory.Default, options);
+        var request = riotApi.Account.ByRiotId(gameName, tagLine, Region.FromRoute(route));
         Assert.AreEqual(expectedEndpoint, request.Uri.AbsoluteUri);
 
         var response = await request.GetReponseAsync();
