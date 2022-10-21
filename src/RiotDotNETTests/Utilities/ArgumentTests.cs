@@ -1,4 +1,6 @@
-﻿namespace RiotDotNET.Utilities.Tests;
+﻿using RiotDotNET.Utilities;
+
+namespace RiotDotNETTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]

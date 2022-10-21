@@ -1,68 +1,43 @@
-﻿namespace RiotDotNET.Endpoints.RiotGames.Riot.Tests;
+﻿namespace RiotDotNETTests.Endpoints.RiotGames.Riot;
 
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Enums;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
 using RiotDotNETTests.Endpoints;
-using RiotDotNETTests.TestClient;
+using RiotDotNETTests.TestHelpers;
+using System;
+using System.Diagnostics;
 using System.Net;
 
 [TestClass]
-public class AccountEndpointTests
+public class AccountEndpointTests : EndpointTestBase
 {
-    const string accountsEndpoint = "https://{region}.api.riotgames.com/riot/account/v1/accounts";
-
-    private readonly IOptions<RiotApiOptions> options = Options.Create(new RiotApiOptions { ApiKey = EndpointConstants.TestRiotToken });
-
-    private const string puuid_lanegg = "htFRLCIeL_WawV6gibBpqNsVlehYPrCJ0mPtJhQFg6Dj2gAFXWKxCGM30OipY2C-bGxuE-Pcs4gDHA";
-    private const string puuid_COOKIEMONSTER123 = "aYyBaBV3wNx2I6fjnPl8FuG46ZvSvLamKgEtZY2T17J1yJKP96uvyFEn0EfKyxL5bWnHeV5GtYBR1w";
-    private const string puuid_Agurin = "i0OCX0PgAEJA7zOUcSQBHoOWcbuSUAnVgnUR0RMMHKGOCYq2RUSaJ9Fp2xe8YzHngrtD_k_cSHVQHQ";
-
-    [TestMethod]
-    [DataRow(RegionRoute.AMERICAS, puuid_lanegg, $"{accountsEndpoint}/by-puuid/{puuid_lanegg}", "lanegg", "NA1")]
-    [DataRow(RegionRoute.AMERICAS, puuid_COOKIEMONSTER123, $"{accountsEndpoint}/by-puuid/{puuid_COOKIEMONSTER123}", "COOKIEMONSTER123", "NA1")]
-    [DataRow(RegionRoute.EUROPE, puuid_Agurin, $"{accountsEndpoint}/by-puuid/{puuid_Agurin}", "Agurin", "EUW")]
-    public async Task ByPuuidTests(RegionRoute route, string puuid, string expectedEndpoint, string expectedName, string expectedTag)
+    public AccountEndpointTests()
+        : base("riot/account/v1/accounts")
     {
-        expectedEndpoint = expectedEndpoint.Replace("{region}", route.ToStringLower());
-
-        var riotApi = new RiotApi(TestHttpClientFactory.Default, options);
-        var request = riotApi.Account.ByPuuid(puuid, Region.FromRoute(route));
-        Assert.AreEqual(expectedEndpoint, request.Uri.AbsoluteUri);
-
-        var response = await request.GetReponseAsync();
-        Assert.IsNotNull(response);
-        Assert.IsTrue(response.Success);
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        Assert.IsNotNull(response.Object);
-        Assert.AreEqual(puuid, response.Object.Puuid);
-        Assert.AreEqual(expectedName, response.Object.Name);
-        Assert.AreEqual(expectedTag, response.Object.Tag);
     }
 
     [TestMethod]
-    [DataRow(RegionRoute.AMERICAS, "lanegg", "NA1", $"{accountsEndpoint}/by-riot-id/lanegg/NA1", puuid_lanegg)]
-    [DataRow(RegionRoute.AMERICAS, "COOKIEMONSTER123", "NA1", $"{accountsEndpoint}/by-riot-id/COOKIEMONSTER123/NA1", puuid_COOKIEMONSTER123)]
-    [DataRow(RegionRoute.EUROPE, "Agurin", "EUW", $"{accountsEndpoint}/by-riot-id/Agurin/EUW", puuid_Agurin)]
-    public async Task ByRiotIdTests(RegionRoute route, string gameName, string tagLine, string expectedEndpoint, string expectedPuuid)
+    [DataRow(RegionRoute.AMERICAS, "lanegg", "NA1")]
+    [DataRow(RegionRoute.AMERICAS, "COOKIEMONSTER123", "NA1")]
+    [DataRow(RegionRoute.EUROPE, "Agurin", "EUW")]
+    public async Task AccountApiTest(RegionRoute route, string name, string tagLine)
     {
-        expectedEndpoint = expectedEndpoint.Replace("{region}", route.ToStringLower());
+        var puuid = Puuids[name];
+        var region = Region.FromRoute(route);
+        var expected = new AccountDto
+        {
+            Name = name,
+            Puuid = puuid,
+            Tag = tagLine
+        };
 
-        var riotApi = new RiotApi(TestHttpClientFactory.Default, options);
-        var request = riotApi.Account.ByRiotId(gameName, tagLine, Region.FromRoute(route));
-        Assert.AreEqual(expectedEndpoint, request.Uri.AbsoluteUri);
-
-        var response = await request.GetReponseAsync();
-        Assert.IsNotNull(response);
-        Assert.IsTrue(response.Success);
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        Assert.IsNotNull(response.Object);
-        Assert.AreEqual(expectedPuuid, response.Object.Puuid);
-        Assert.AreEqual(gameName, response.Object.Name);
-        Assert.AreEqual(tagLine, response.Object.Tag);
+        await ValidateRequest(RiotApi.Account.ByPuuid(puuid, region), region, $"by-puuid/{puuid}", expected);
+        await ValidateRequest(RiotApi.Account.ByRiotId(name, tagLine, region), region, $"by-riot-id/{name}/{tagLine}", expected);
     }
 }

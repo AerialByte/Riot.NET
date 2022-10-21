@@ -1,4 +1,6 @@
-﻿namespace RiotDotNET.Extensions.Tests;
+﻿using RiotDotNET.Extensions;
+
+namespace RiotDotNETTests.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
@@ -14,7 +16,7 @@ public class HttpRequestHeadersExtensionsTests
         };
 
         using var request = new HttpRequestMessage();
-        foreach ( var value in headerValues)
+        foreach (var value in headerValues)
         {
             request.Headers.Add(value);
         }

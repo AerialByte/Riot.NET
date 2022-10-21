@@ -1,4 +1,4 @@
-﻿namespace RiotDotNET.Endpoints.RiotGames.Riot;
+﻿namespace RiotDotNET.Endpoints.RiotGames.LoL;
 using RiotDotNET.Constants;
 
 /// <summary>

@@ -1,4 +1,6 @@
 ﻿namespace RiotDotNET.Services.Riot;
+
+using RiotDotNET.Endpoints.RiotGames.LoL;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 
 /// <summary>

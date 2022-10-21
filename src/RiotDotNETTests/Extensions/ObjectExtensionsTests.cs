@@ -1,4 +1,6 @@
-﻿namespace RiotDotNET.Extensions.Tests;
+﻿using RiotDotNET.Extensions;
+
+namespace RiotDotNETTests.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Enums;
 

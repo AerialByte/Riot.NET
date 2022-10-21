@@ -1,4 +1,4 @@
-﻿namespace RiotDotNETTests.TestClient;
+﻿namespace RiotDotNETTests.TestHelpers;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNETTests.Endpoints;
@@ -47,7 +47,7 @@ public class TestHttpMessageHandler : HttpMessageHandler
 }",
         },
 
-#endregion
+        #endregion
 
         #region Summoner-V4 Responses
 

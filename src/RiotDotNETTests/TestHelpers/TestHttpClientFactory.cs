@@ -1,4 +1,4 @@
-﻿namespace RiotDotNETTests.TestClient;
+﻿namespace RiotDotNETTests.TestHelpers;
 using System.Net.Http;
 
 internal class TestHttpClientFactory : IHttpClientFactory
