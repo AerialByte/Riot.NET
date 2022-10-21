@@ -1,6 +1,5 @@
-﻿using RiotDotNET.Extensions;
-
-namespace RiotDotNETTests.Extensions;
+﻿namespace RiotDotNETTests.Extensions;
+using RiotDotNET.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
