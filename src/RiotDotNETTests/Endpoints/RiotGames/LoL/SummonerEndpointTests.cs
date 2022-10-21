@@ -2,11 +2,14 @@
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints.RiotGames.LoL;
+using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Enums;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
 using RiotDotNETTests.Endpoints;
 using RiotDotNETTests.TestHelpers;
+using System.Diagnostics;
 using System.Net;
 
 [TestClass]
@@ -23,18 +26,15 @@ public class SummonerEndpointTests : EndpointTestBase
     [DataRow(PlatformRoute.EUW1, "Agurin")]
     public async Task ByPuuidTests(PlatformRoute route, string name)
     {
-        var puuid = Puuids[name];
+        var expected = Summoners[name];
+        var platform = Platform.FromRoute(route);
+        string accountId = expected.AccountId,
+            summonerId = expected.Id,
+            puuid = expected.Puuid;
 
-        var request = RiotApi.Summoner.ByPuuid(puuid, Platform.FromRoute(route));
-        var expectedEndpoint = GetUri(route, $"by-puuid/{puuid}");
-        Assert.AreEqual(expectedEndpoint, request.Uri.AbsoluteUri);
-
-        var response = await request.GetReponseAsync();
-        Assert.IsNotNull(response);
-        Assert.IsTrue(response.Success);
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        Assert.IsNotNull(response.Object);
-        Assert.AreEqual(puuid, response.Object.Puuid);
-        Assert.AreEqual(name, response.Object.Name);
+        await ValidateRequest(RiotApi.Summoner.ByAccount(accountId, platform), platform, $"by-account/{accountId}", expected);
+        await ValidateRequest(RiotApi.Summoner.ById(summonerId, platform), platform, $"{summonerId}", expected);
+        await ValidateRequest(RiotApi.Summoner.ByName(name, platform), platform, $"by-name/{name}", expected);
+        await ValidateRequest(RiotApi.Summoner.ByPuuid(puuid, platform), platform, $"by-puuid/{puuid}", expected);
     }
 }

@@ -28,7 +28,7 @@ public class AccountEndpointTests : EndpointTestBase
     [DataRow(RegionRoute.EUROPE, "Agurin", "EUW")]
     public async Task AccountApiTest(RegionRoute route, string name, string tagLine)
     {
-        var puuid = Puuids[name];
+        var puuid = Summoners[name].Puuid;
         var region = Region.FromRoute(route);
         var expected = new AccountDto
         {

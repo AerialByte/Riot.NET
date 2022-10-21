@@ -14,6 +14,7 @@ public class TestHttpMessageHandler : HttpMessageHandler
 {
     private static Dictionary<HttpStatusCode, string> invalidResponse = new()
     {
+        [HttpStatusCode.BadRequest] = @"{""status"":{""status_code"":400}}",
         [HttpStatusCode.Unauthorized] = @"{""status"":{""message"":""Unauthorized"",""status_code"":401}}",
         [HttpStatusCode.NotFound] = @"{""status"":{""message"":""Data not found"",""status_code"":404}}",
     };
@@ -29,19 +30,19 @@ public class TestHttpMessageHandler : HttpMessageHandler
         [accountV1Endpoint] = new()
         {
             ["/by-riot-id/Agurin/EUW"] = @"{
-    ""puuid"": ""i0OCX0PgAEJA7zOUcSQBHoOWcbuSUAnVgnUR0RMMHKGOCYq2RUSaJ9Fp2xe8YzHngrtD_k_cSHVQHQ"",
+    ""puuid"": ""UNyvfnTchNzhdHA9Y_PAegVcaUOy0BaGY60bhT9vVgOmoOohUkmEBywVZiMCuRrB_lN14JgjHBsgaw"",
     ""gameName"": ""Agurin"",
     ""tagLine"": ""EUW""
 }",
 
             ["/by-riot-id/lanegg/NA1"] = @"{
-    ""puuid"": ""htFRLCIeL_WawV6gibBpqNsVlehYPrCJ0mPtJhQFg6Dj2gAFXWKxCGM30OipY2C-bGxuE-Pcs4gDHA"",
+    ""puuid"": ""ykDllSHvCjx0dPvV_sQDBdgjoylk7OPGxPdt49pk6vox2nZ2AvRl9cGQHDKP6Uvtgm8J2KTZHxF4YQ"",
     ""gameName"": ""lanegg"",
     ""tagLine"": ""NA1""
 }",
 
             ["/by-riot-id/COOKIEMONSTER123/NA1"] = @"{
-    ""puuid"": ""aYyBaBV3wNx2I6fjnPl8FuG46ZvSvLamKgEtZY2T17J1yJKP96uvyFEn0EfKyxL5bWnHeV5GtYBR1w"",
+    ""puuid"": ""q-59OC-fr19MM_ev8zX7SEkAe_5DK6xID7Lbri_51iqEKN5w1vbgrHXeuxPeBvg96A2XkpBPqZ-2TQ"",
     ""gameName"": ""COOKIEMONSTER123"",
     ""tagLine"": ""NA1""
 }",
@@ -54,9 +55,9 @@ public class TestHttpMessageHandler : HttpMessageHandler
         [summonerV4Endpoint] = new()
         {
             ["/by-name/Agurin"] = @"{
-    ""id"": ""ZYrKeyRnPGJBBOctFhnlbYjrsiX5YXDMUlnl7bYEKJI9vOs"",
-    ""accountId"": ""19qZwxUmzq5JvjiAy21G5JJ-PLbaeWVrQpIPZBftmwCJ9w"",
-    ""puuid"": ""i0OCX0PgAEJA7zOUcSQBHoOWcbuSUAnVgnUR0RMMHKGOCYq2RUSaJ9Fp2xe8YzHngrtD_k_cSHVQHQ"",
+    ""id"": ""oTWjkY-F-oLAqHs5qkM54UnvxS8cpAewKAv9swy7oKSzh0c"",
+    ""accountId"": ""B54j00MSC0onav0-DCe6adKarIn6ALIHeyw9Bxv3CicTiQ"",
+    ""puuid"": ""UNyvfnTchNzhdHA9Y_PAegVcaUOy0BaGY60bhT9vVgOmoOohUkmEBywVZiMCuRrB_lN14JgjHBsgaw"",
     ""name"": ""Agurin"",
     ""profileIconId"": 4353,
     ""revisionDate"": 1666110833000,
@@ -64,9 +65,9 @@ public class TestHttpMessageHandler : HttpMessageHandler
 }",
 
             ["/by-name/lanegg"] = @"{
-    ""id"": ""62y1gjBhMgJsMsVdd-339qibl8UcGot-D7MOQunYS7SYf5amO_j_sN9JMw"",
-    ""accountId"": ""xM75th03KhMhabLGYq7emgXTJeMQKHJ5miit9Qt-aESM4ufV17Q5ztkh"",
-    ""puuid"": ""htFRLCIeL_WawV6gibBpqNsVlehYPrCJ0mPtJhQFg6Dj2gAFXWKxCGM30OipY2C-bGxuE-Pcs4gDHA"",
+    ""id"": ""VN_zm246D0g0nbmtroeam98OhX8LwYLlrhy07FAjmCB3yUu3GIdN22QCCQ"",
+    ""accountId"": ""yKz49zfgnkVTEYG7-rPJZr60B7p_-Ek5Tcjb1_4niaCEO_rDUwGqS8DW"",
+    ""puuid"": ""ykDllSHvCjx0dPvV_sQDBdgjoylk7OPGxPdt49pk6vox2nZ2AvRl9cGQHDKP6Uvtgm8J2KTZHxF4YQ"",
     ""name"": ""lanegg"",
     ""profileIconId"": 5067,
     ""revisionDate"": 1635387842000,
@@ -74,9 +75,9 @@ public class TestHttpMessageHandler : HttpMessageHandler
 }",
 
             ["/by-name/COOKIEMONSTER123"] = @"{
-    ""id"": ""nt3lh6DtEiIp41U3-XP5usI_r-m3qrhZPFkMtJG4F-79Yv3AeTGdTJISiQ"",
-    ""accountId"": ""rLuWFgWNWx_yo8TRw7vXp_KnswtBMU341TyF2V8VweDiKdwnURI_t5UC"",
-    ""puuid"": ""aYyBaBV3wNx2I6fjnPl8FuG46ZvSvLamKgEtZY2T17J1yJKP96uvyFEn0EfKyxL5bWnHeV5GtYBR1w"",
+    ""id"": ""4Vaug7PDl8Rt8nZxYrEciphqzMiUTai-q3SW6hzjGXi8VK4IulsiAIvQ8w"",
+    ""accountId"": ""TBJXabWboLPseVmGoS6oyqs_TrqkwW3LNhMdj4z5-_a0_g-SpgM-IFEG"",
+    ""puuid"": ""q-59OC-fr19MM_ev8zX7SEkAe_5DK6xID7Lbri_51iqEKN5w1vbgrHXeuxPeBvg96A2XkpBPqZ-2TQ"",
     ""name"": ""COOKIEMONSTER123"",
     ""profileIconId"": 907,
     ""revisionDate"": 1665962308000,
