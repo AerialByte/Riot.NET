@@ -6,15 +6,21 @@ using System.Net;
 /// </summary>
 public class EndpointResponse<TResponse>
 {
-    internal EndpointResponse(TResponse obj)
+    internal EndpointResponse(HttpStatusCode? statusCode)
+    {
+        StatusCode = statusCode;
+    }
+
+    internal EndpointResponse(TResponse obj, HttpStatusCode? statusCode = HttpStatusCode.OK)
+        : this(statusCode)
     {
         Object = obj;
     }
 
     internal EndpointResponse(Exception exception, HttpStatusCode? statusCode = null)
+        : this(statusCode)
     {
         Exception = exception;
-        StatusCode = statusCode;
     }
 
     /// <summary>

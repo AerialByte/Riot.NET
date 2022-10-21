@@ -1,15 +1,16 @@
 ﻿namespace RiotDotNET.Endpoints.RiotGames;
+
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
 
-internal abstract class RegionEndpoint : RiotGamesEndpoint
+public abstract class RegionEndpoint : RiotGamesEndpoint
 {
     /// <inheritdoc/>
-    protected RegionEndpoint(IOptions<RiotApiOptions> options)
-        : base(options)
+    protected RegionEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
+        : base(httpClientFactory, options)
     {
     }
 

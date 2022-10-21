@@ -3,12 +3,13 @@ using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
 using RiotDotNET.Services.Riot;
 
-internal abstract class RiotGamesEndpoint : EndpointBase
+public abstract class RiotGamesEndpoint : EndpointBase
 {
     private readonly RiotApiOptions config;
 
     /// <param name="options">The riot api config.</param>
-    protected RiotGamesEndpoint(IOptions<RiotApiOptions> options)
+    protected RiotGamesEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
+        : base(httpClientFactory)
     {
         config = options.Value;
 

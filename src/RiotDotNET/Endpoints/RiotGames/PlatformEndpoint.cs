@@ -1,4 +1,5 @@
 ﻿namespace RiotDotNET.Endpoints.RiotGames;
+
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
 using RiotDotNET.Endpoints.RiotGames.Riot;
@@ -8,8 +9,8 @@ using RiotDotNET.Services.Riot;
 internal abstract class PlatformEndpoint : RiotGamesEndpoint
 {
     /// <inheritdoc/>
-    protected PlatformEndpoint(IOptions<RiotApiOptions> options)
-        : base(options)
+    protected PlatformEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
+        : base(httpClientFactory, options)
     {
     }
 

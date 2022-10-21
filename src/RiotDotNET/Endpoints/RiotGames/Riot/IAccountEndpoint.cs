@@ -14,4 +14,13 @@ public interface IAccountEndpoint
     /// <param name="region">The region to execute the request on.</param>
     /// <returns>The request.</returns>
     EndpointRequest<AccountDto> ByPuuid(string puuid, Region region);
+
+    /// <summary>
+    /// Gets the global account information by the player's universal unique id (puuid).
+    /// </summary>
+    /// <param name="gameName">The player's game name.</param>
+    /// <param name="tagLine">The player's tag line (defaults to platform, eg; NA1).</param>
+    /// <param name="region">The region to execute the request on.</param>
+    /// <returns>The request.</returns>
+    EndpointRequest<AccountDto> ByRiotId(string gameName, string tagLine, Region region);
 }

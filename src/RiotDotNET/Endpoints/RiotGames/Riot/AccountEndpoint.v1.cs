@@ -4,15 +4,18 @@ using RiotDotNET.Constants;
 using RiotDotNET.Services.Riot;
 
 /// <inheritdoc cref="IAccountEndpoint"/>
-internal class AccountEndpoint : RegionEndpoint, IAccountEndpoint
+public sealed class AccountEndpoint : RegionEndpoint, IAccountEndpoint
 {
     /// <inheritdoc cref="RegionEndpoint(IOptions{RiotApiOptions}, Region)"/>
-    public AccountEndpoint(IOptions<RiotApiOptions> options)
-        : base(options)
+    public AccountEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
+        : base(httpClientFactory, options)
     {
     }
 
     /// <inheritdoc/>
     public EndpointRequest<AccountDto> ByPuuid(string puuid, Region region) =>
         Request<AccountDto>(region, $"{Default.RiotApi.Path.Account_v1}/accounts/by-puuid/{puuid}");
+
+    public EndpointRequest<AccountDto> ByRiotId(string gameName, string tagLine, Region region) =>
+        Request<AccountDto>(region, $"{Default.RiotApi.Path.Account_v1}/accounts/by-riot-id/{gameName}/{tagLine}");
 }

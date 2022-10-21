@@ -1,4 +1,5 @@
 ﻿namespace RiotDotNET.Services.Riot;
+
 using Microsoft.Extensions.Options;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 
@@ -8,17 +9,19 @@ using RiotDotNET.Endpoints.RiotGames.Riot;
 /// </summary>
 public class RiotApi : IRiotApi
 {
+    private readonly IHttpClientFactory httpClientFactory;
     private readonly IOptions<RiotApiOptions> options;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RiotApi"/> class.
     /// </summary>
     /// <param name="options">The configuration config for the riot api service.</param>
-    public RiotApi(IOptions<RiotApiOptions> options)
+    public RiotApi(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
     {
+        this.httpClientFactory = httpClientFactory;
         this.options = options;
     }
 
     /// <inheritdoc/>
-    public IAccountEndpoint Account => new AccountEndpoint(options);
+    public IAccountEndpoint Account => new AccountEndpoint(httpClientFactory, options);
 }

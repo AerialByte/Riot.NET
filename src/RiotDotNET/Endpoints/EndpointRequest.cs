@@ -1,6 +1,8 @@
 ﻿namespace RiotDotNET.Endpoints;
 using RiotDotNET.Extensions;
 using System.Collections.ObjectModel;
+using System.Net;
+using System.Net.Http;
 using System.Net.Http.Json;
 
 /// <summary>
@@ -9,21 +11,30 @@ using System.Net.Http.Json;
 public class EndpointRequest<TResponse>
     where TResponse : class
 {
-    private static readonly HttpClient httpClient = new(new SocketsHttpHandler() { PooledConnectionLifetime = TimeSpan.FromMinutes(15) });
-
-    private readonly Uri uri;
-    private readonly ReadOnlyDictionary<string, string>? headers;
+    private readonly IHttpClientFactory httpClientFactory;
 
     /// <summary>
     /// Creates a new request from the specified uri and headers.
     /// </summary>
+    /// <param name="httpClientFactory">The factory for creating http clients.</param>
     /// <param name="uri">The request uri.</param>
     /// <param name="headers">The request headers to use.</param>
-    internal EndpointRequest(Uri uri, Dictionary<string, string>? headers = null)
+    internal EndpointRequest(IHttpClientFactory httpClientFactory, Uri uri, Dictionary<string, string>? headers = null)
     {
-        this.uri = uri;
-        this.headers = headers?.ReadOnly();
+        this.httpClientFactory = httpClientFactory;
+        Uri = uri;
+        Headers = headers?.ReadOnly();
     }
+
+    /// <summary>
+    /// The request Uri.
+    /// </summary>
+    public Uri Uri { get; init; }
+
+    /// <summary>
+    /// The request headers.
+    /// </summary>
+    public ReadOnlyDictionary<string, string>? Headers { get; init; }
 
     /// <summary>
     /// Executes the request and returns the response object.
@@ -34,9 +45,10 @@ public class EndpointRequest<TResponse>
     {
         try
         {
-            using var request = new HttpRequestMessage(HttpMethod.Get, uri);
-            headers?.ForEach(request.Headers.Add);
+            using var request = new HttpRequestMessage(HttpMethod.Get, Uri);
+            Headers?.ForEach(request.Headers.Add);
 
+            var httpClient = httpClientFactory.CreateClient();
             var response = await httpClient.SendAsync(request, token);
             if (response.IsSuccessStatusCode)
             {
@@ -47,7 +59,7 @@ public class EndpointRequest<TResponse>
                 }
                 else
                 {
-                    return new(obj);
+                    return new(obj, response.StatusCode);
                 }
             }
             else
