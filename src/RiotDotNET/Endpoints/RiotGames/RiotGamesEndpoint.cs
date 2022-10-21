@@ -2,22 +2,18 @@
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
 using RiotDotNET.Services.Riot;
+using RiotDotNET.Utilities;
 
 public abstract class RiotGamesEndpoint : EndpointBase
 {
-    private readonly RiotApiOptions config;
+    private RiotApiOptions config;
 
     /// <param name="options">The riot api config.</param>
     protected RiotGamesEndpoint(IHttpClientFactory httpClientFactory, IOptions<RiotApiOptions> options)
         : base(httpClientFactory)
     {
         config = options.Value;
-
-        if (string.IsNullOrWhiteSpace(config.ApiKey))
-        {
-            throw new ArgumentNullException("A valid api key must be specified.", nameof(config.ApiKey));
-        }
-
+        Argument.NotNull(config.ApiKey, nameof(config.ApiKey), "A valid api key must be specified.");
         Headers.Add(Default.RiotApi.TokenHeader, config.ApiKey);
     }
 
