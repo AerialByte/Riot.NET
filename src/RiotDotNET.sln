@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiotDotNET", "RiotDotNET\RiotDotNET.csproj", "{A0579B59-02A2-4DB8-B15A-A838ADB98A9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiotDotNETTests", "RiotDotNETTests\RiotDotNETTests.csproj", "{10FC5A5D-BE10-4142-8F3B-6156C464273F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiotDotNET.Tests", "RiotDotNET.Tests\RiotDotNET.Tests.csproj", "{10FC5A5D-BE10-4142-8F3B-6156C464273F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{20714974-8118-4362-B85F-F2449034E538}"
 	ProjectSection(SolutionItems) = preProject

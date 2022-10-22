@@ -1,4 +1,4 @@
-﻿namespace RiotDotNETTests.TestHelpers;
+﻿namespace RiotDotNET.Tests.TestHelpers;
 
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -7,7 +7,7 @@ using RiotDotNET.Endpoints;
 using RiotDotNET.Enums;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
-using RiotDotNETTests.Endpoints;
+using RiotDotNET.Tests.Endpoints;
 using System;
 using System.Collections.Generic;
 using System.Linq;

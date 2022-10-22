@@ -1,9 +1,9 @@
-﻿namespace RiotDotNETTests.Endpoints.RiotGames.LoL;
+﻿namespace RiotDotNET.Tests.Endpoints.RiotGames.LoL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
 using RiotDotNET.Enums;
 using RiotDotNET.Services.Riot;
-using RiotDotNETTests.TestHelpers;
+using RiotDotNET.Tests.TestHelpers;
 
 [TestClass]
 public class SummonerEndpointTests : EndpointTestBase

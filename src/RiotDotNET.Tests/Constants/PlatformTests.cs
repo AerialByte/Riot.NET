@@ -1,4 +1,4 @@
-﻿namespace RiotDotNETTests.Constants;
+﻿namespace RiotDotNET.Tests.Constants;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
 using RiotDotNET.Enums;

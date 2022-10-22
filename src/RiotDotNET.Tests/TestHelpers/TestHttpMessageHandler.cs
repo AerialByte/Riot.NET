@@ -1,7 +1,7 @@
-﻿namespace RiotDotNETTests.TestHelpers;
+﻿namespace RiotDotNET.Tests.TestHelpers;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RiotDotNETTests.Endpoints;
+using RiotDotNET.Tests.Endpoints;
 using System;
 using System.Data;
 using System.Linq;
@@ -20,6 +20,12 @@ public class TestHttpMessageHandler : HttpMessageHandler
     };
 
     const string accountV1Endpoint = "/riot/account/v1";
+    const string championMasteryV4Endpoint = "/lol/champion-mastery/v4";
+    const string championV3Endpoint = "/lol/platform/v3";
+    const string clashV1Endpoint = "/lol/clash/v1";
+    const string leagueExpV4Endpoint = "/lol/league-exp/v4";
+    const string leagueV4Endpoint = "/lol/league/v4";
+    const string lolChallengesV1Endpoint = "/lol/challenges/v1";
     const string summonerV4Endpoint = "/lol/summoner/v4";
 
     private static readonly Dictionary<string, Dictionary<string, string>> responses = new()
