@@ -30,7 +30,6 @@ public class TestHttpMessageHandler : HttpMessageHandler
 
     private static readonly Dictionary<string, Dictionary<string, string>> responses = new()
     {
-
         #region Account-V1 Responses
 
         [accountV1Endpoint] = new()
