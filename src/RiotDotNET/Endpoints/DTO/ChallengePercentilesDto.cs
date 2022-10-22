@@ -2,6 +2,6 @@
 using RiotDotNET.Enums;
 using System.Collections.Generic;
 
-public class ChallengesPercentilesListDto : Dictionary<long, Dictionary<LeagueRankTier, double>>
+public class ChallengePercentilesDto : Dictionary<LeagueRankTier, double>
 {
 }
