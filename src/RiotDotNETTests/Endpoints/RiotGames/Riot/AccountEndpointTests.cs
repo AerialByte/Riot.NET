@@ -1,18 +1,11 @@
 ﻿namespace RiotDotNETTests.Endpoints.RiotGames.Riot;
 
-using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
-using RiotDotNET.Endpoints;
-using RiotDotNET.Endpoints.RiotGames.Riot;
+using RiotDotNET.Endpoints.DTO;
 using RiotDotNET.Enums;
-using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
-using RiotDotNETTests.Endpoints;
 using RiotDotNETTests.TestHelpers;
-using System;
-using System.Diagnostics;
-using System.Net;
 
 [TestClass]
 public class AccountEndpointTests : EndpointTestBase

@@ -1,5 +1,6 @@
-﻿namespace RiotDotNET.Endpoints.RiotGames.LoL;
+﻿namespace RiotDotNET.Endpoints.Interfaces;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints.DTO;
 
 /// <summary>
 /// Represents the riot games summoner v4 endpoint.

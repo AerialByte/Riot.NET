@@ -1,6 +1,7 @@
 ﻿namespace RiotDotNET.Services.Riot;
 
 using Microsoft.Extensions.Options;
+using RiotDotNET.Endpoints.Interfaces;
 using RiotDotNET.Endpoints.RiotGames.LoL;
 using RiotDotNET.Endpoints.RiotGames.Riot;
 

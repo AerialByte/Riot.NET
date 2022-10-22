@@ -3,7 +3,6 @@
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotDotNET.Constants;
-using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Endpoints;
 using RiotDotNET.Enums;
 using RiotDotNET.Extensions;
@@ -13,13 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Xml.Linq;
-using Newtonsoft.Json.Serialization;
 using System.Text.Json.Serialization;
-using RiotDotNET.Endpoints.RiotGames.LoL;
+using RiotDotNET.Endpoints.DTO;
 
 public abstract class EndpointTestBase
 {

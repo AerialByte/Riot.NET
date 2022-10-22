@@ -1,5 +1,4 @@
 ﻿namespace RiotDotNET.Endpoints;
-using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Extensions;
 using System.Collections.ObjectModel;
 

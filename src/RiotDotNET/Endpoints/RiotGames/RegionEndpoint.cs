@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
-using RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Extensions;
 using RiotDotNET.Services.Riot;
 

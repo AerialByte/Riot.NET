@@ -1,5 +1,6 @@
 ﻿namespace RiotDotNET.Endpoints.RiotGames.Riot;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints.DTO;
 
 /// <summary>
 /// Represents the riot games Account v1 endpoint.

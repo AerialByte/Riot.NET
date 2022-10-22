@@ -1,6 +1,7 @@
 ﻿namespace RiotDotNET.Endpoints.RiotGames.Riot;
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints.DTO;
 using RiotDotNET.Services.Riot;
 
 /// <inheritdoc cref="IAccountEndpoint"/>

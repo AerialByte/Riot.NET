@@ -2,10 +2,12 @@
 
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
+using RiotDotNET.Endpoints.DTO;
+using RiotDotNET.Endpoints.Interfaces;
 using RiotDotNET.Services.Riot;
-using System;
 using System.Net.Http;
 
+/// <inheritdoc cref="ISummonerEndpoint"/>
 internal sealed class SummonerEndpoint : PlatformEndpoint, ISummonerEndpoint
 {
     /// <inheritdoc cref="PlatformEndpoint(IHttpClientFactory, IOptions{RiotApiOptions})"/>
