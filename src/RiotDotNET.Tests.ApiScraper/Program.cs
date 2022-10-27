@@ -4,11 +4,9 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium.Interactions;
 using RiotDotNET.Tests.ApiScraper.ScrapeData;
 using System.Collections.ObjectModel;
-using System.Formats.Asn1;
 using System.Globalization;
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
@@ -288,7 +286,7 @@ class Program
         return getOperations;
     }
 
-    static string CleanResponseType(string responseType)
+    static string CleanResponseType(string? responseType)
     {
         if (responseType == null)
         {
@@ -343,23 +341,13 @@ class Program
         }
         responseType += "Dto";
 
-        switch (responseType.ToLower())
+        return responseType.ToLower() switch
         {
-            case "booleandto":
-                return "bool";
-
-            case "integerdto":
-                return "int";
-
-            case "stringdto":
-            case "intdto":
-            case "longdto":
-            case "doubledto":
-                return responseType[..^3].ToLower();
-
-            default:
-                return responseType;
-        }
+            "booleandto" => "bool",
+            "integerdto" => "int",
+            "stringdto" or "intdto" or "longdto" or "doubledto" => responseType[..^3].ToLower(),
+            _ => responseType,
+        };
     }
 
     static void SaveData(List<ApiEndpoint> apiEndpoints, List<ApiDataType> apiDataTypes, string outDir, string outFileBase)

@@ -1,10 +1,4 @@
 ﻿namespace RiotDotNET.Tests.ApiScraper.ScrapeData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 internal class ApiDataTypeProperty
 {
     public string? Name { get; set; }
