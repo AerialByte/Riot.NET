@@ -1,4 +1,4 @@
-﻿namespace RiotDotNET.Tests.ApiScraper;
+﻿namespace RiotDotNET.Tests.ApiScraper.ScrapeData;
 using System;
 using System.Collections.Generic;
 using System.Linq;

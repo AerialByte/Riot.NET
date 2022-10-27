@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using RiotDotNET.Constants;
 using RiotDotNET.Endpoints.DTO;
+using RiotDotNET.Endpoints.Interfaces;
 using RiotDotNET.Services.Riot;
 
 /// <inheritdoc cref="IAccountEndpoint"/>

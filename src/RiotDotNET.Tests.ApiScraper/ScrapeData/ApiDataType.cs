@@ -1,4 +1,4 @@
-﻿namespace RiotDotNET.Tests.ApiScraper;
+﻿namespace RiotDotNET.Tests.ApiScraper.ScrapeData;
 
 using CsvHelper.Configuration.Attributes;
 using System;

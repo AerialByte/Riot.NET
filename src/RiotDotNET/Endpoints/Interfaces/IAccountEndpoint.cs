@@ -1,4 +1,4 @@
-﻿namespace RiotDotNET.Endpoints.RiotGames.Riot;
+﻿namespace RiotDotNET.Endpoints.Interfaces;
 using RiotDotNET.Constants;
 using RiotDotNET.Endpoints.DTO;
 

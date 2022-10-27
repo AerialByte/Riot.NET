@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Code coverage results
 /src/*/coverage.opencover.xml
+/src/Generated/In

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RiotDotNET.Tests.ApiScraper": {
+      "commandName": "Project",
+      "commandLineArgs": "$(ProjectDir)..\\Generated\\In\\Data.csv $(ProjectDir)..\\Generated\\Out"
+    }
+  }
+}

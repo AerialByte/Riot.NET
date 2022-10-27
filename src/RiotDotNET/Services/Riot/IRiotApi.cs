@@ -1,7 +1,6 @@
 ﻿namespace RiotDotNET.Services.Riot;
 
 using RiotDotNET.Endpoints.Interfaces;
-using RiotDotNET.Endpoints.RiotGames.Riot;
 
 /// <summary>
 /// Represents the riot api service.
